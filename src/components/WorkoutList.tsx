@@ -1,4 +1,4 @@
-import type { FC } from "react";
+import { useState, type FC } from "react";
 
 interface WorkoutListProps{
 
@@ -6,12 +6,20 @@ interface WorkoutListProps{
 
 export const WorkoutList:FC<WorkoutListProps> = () => {
 
-    const workouts = JSON.parse(localStorage.getItem('workout') || '[]')
+    const [workouts,setWorkouts] = useState(()=>{return JSON.parse(localStorage.getItem('workout') || '[]')})
+
+    const clearList = () => {
+        if(window.confirm("Вы уверены, что хотите очистить весь список тренировок?")){
+            localStorage.removeItem('workout')
+            setWorkouts([])
+            alert('Список очищен')
+        }
+    }
 
     return (
       <div className="workout-list">
         <h2>История тренировок</h2>
-        {workouts.lenght === 0? (
+        {workouts.length === 0? (
             <p>Записей пока нет</p>
         ) : (
             <ul>
@@ -22,6 +30,9 @@ export const WorkoutList:FC<WorkoutListProps> = () => {
                 ))}
             </ul>
         )}
+
+        {workouts.length > 0 && <button onClick={clearList}>Очистить список</button>}
+        
       </div>
     )
 }
