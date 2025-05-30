@@ -1,0 +1,45 @@
+.workout-form, .workout-list {
+  max-width: 500px;
+  margin: 0 auto;
+  background: #1e1e1e;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1rem;
+  background: #2c2c2c;
+  color: white;
+  border: 1px solid #444;
+  border-radius: 4px;
+}
+
+button {
+  cursor: pointer;
+  background-color: #3b82f6;
+  border: none;
+}
+
+button:hover {
+  background-color: #2563eb;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  background-color: #2c2c2c;
+  border-radius: 4px;
+}
