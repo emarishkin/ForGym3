@@ -20,6 +20,12 @@ export const WorkoutForm: FC<WorkoutFormProps> = () => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
+
+        if(!form.user || !form.exercise || !form.weight || !form.date || !form.reps){
+            alert('Заполните все поля')
+            return
+        }
+
         const newEntry: WorkoutEntry = {
             id: Date.now().toString(),
             date: form.date,
