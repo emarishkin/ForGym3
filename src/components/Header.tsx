@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../style/Header.css'
+import '../style/header.css'
 import type { FC } from 'react';
 
 const Header: FC = () => {
