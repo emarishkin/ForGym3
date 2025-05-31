@@ -3,6 +3,7 @@ import { WorkoutForm } from './components/WorkoutForm';
 import Header from './components/Header';
 import '../src/style/app.css'
 import { WorkoutList } from './components/WorkoutList';
+import { WorkoutStats } from './components/WorkoutStats';
 
 function App() {
   
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<WorkoutForm />} />
             <Route path="/history" element={<WorkoutList />} />
+            <Route path="/stats" element={<WorkoutStats />} />
           </Routes>
         </main>
       </div>
