@@ -28,6 +28,13 @@ export const WorkoutList: FC<WorkoutListProps> = () => {
         }
     };
 
+    const delItem = (id:string) => {
+         const updatedWorkouts = workouts.filter((workout)=>workout.id !== id)
+         setWorkouts(updatedWorkouts)
+         localStorage.setItem('workout', JSON.stringify(updatedWorkouts))
+         alert('Упражнение удалено  ')
+    }
+
     return (
         <div className="workout-list">
             <h2 className="workout-list__title">История тренировок</h2>
@@ -53,6 +60,7 @@ export const WorkoutList: FC<WorkoutListProps> = () => {
                                                     <span className="workout-item__duration"> ({workout.duration} мин)</span>
                                                 )}
                                             </span>
+                                            <button className="workout-item__delete-btn1" onClick={()=>delItem(workout.id)}>Удалить</button>
                                         </li>
                                     ))}
                                 </ul>
