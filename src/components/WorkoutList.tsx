@@ -53,6 +53,7 @@ export const WorkoutList: FC<WorkoutListProps> = () => {
                                 <ul className="workout-group__list">
                                     {groupWorkouts.map((workout) => (
                                         <li key={workout.id} className="workout-item">
+                                            <div style={{display:'flex',flexDirection:'column'}}>
                                             <span className="workout-item__exercise">{workout.exercise}</span>
                                             <span className="workout-item__details">
                                                 {workout.weight} кг × {workout.reps} повторений
@@ -60,7 +61,9 @@ export const WorkoutList: FC<WorkoutListProps> = () => {
                                                     <span className="workout-item__duration"> ({workout.duration} мин)</span>
                                                 )}
                                             </span>
+                                             </div>
                                             <button className="workout-item__delete-btn1" onClick={()=>delItem(workout.id)}>Удалить</button>
+                                            
                                         </li>
                                     ))}
                                 </ul>
