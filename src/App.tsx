@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { WorkoutForm } from './components/WorkoutForm';
 import Header from './components/Header';
-import '../src/style/app.css'
 import { WorkoutList } from './components/WorkoutList';
 import { WorkoutStats } from './components/WorkoutStats';
 
