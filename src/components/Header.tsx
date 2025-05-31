@@ -1,16 +1,15 @@
-
 import { Link } from 'react-router-dom';
-import '../style/header.css'
+import '../style/Header.css'
 import type { FC } from 'react';
 
-const Header:FC = () => {
+const Header: FC = () => {
   return (
     <header className="header">
-      <h1>Gym</h1>
-      <nav>
-        <Link to="/">Новая тренировка</Link>
-        <Link to="/history">История</Link>
-        <Link to="/stats">Статистика</Link>
+      <h1 className="header__title">Gym Tracker</h1>
+      <nav className="header__nav">
+        <Link className="nav-link" to="/">Новая тренировка</Link>
+        <Link className="nav-link" to="/history">История</Link>
+        <Link className="nav-link" to="/stats">Статистика</Link>
       </nav>
     </header>
   );

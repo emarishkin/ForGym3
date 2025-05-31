@@ -1,0 +1,105 @@
+.workout-list {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  color: #e0e0e0;
+}
+
+.workout-list__title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.workout-list__empty {
+  text-align: center;
+  color: #a0a0a0;
+  font-size: 1.1rem;
+}
+
+.workout-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.workout-group {
+  background: #2d2d2d;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.workout-group__header {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: #ffffff;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #444;
+}
+
+.workout-group__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.workout-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+  background: #3a3a3a;
+  border-radius: 6px;
+}
+
+.workout-item__exercise {
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.workout-item__details {
+  color: #b0b0b0;
+}
+
+.workout-item__duration {
+  color: #8ab4f8;
+  margin-left: 0.3rem;
+}
+
+.workout-list__clear {
+  margin-top: 2rem;
+  padding: 0.8rem 1.5rem;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.workout-list__clear:hover {
+  background: #cc0000;
+}
+
+@media (max-width: 768px) {
+  .workout-list {
+    padding: 1rem;
+  }
+  
+  .workout-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+}

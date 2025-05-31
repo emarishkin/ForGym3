@@ -1,38 +1,72 @@
 import { useState, type FC } from "react";
+import type { WorkoutEntry } from "../types/workout";
+import '../style/WorkoutList.css'
 
-interface WorkoutListProps{
+interface WorkoutListProps {}
 
-}
+export const WorkoutList: FC<WorkoutListProps> = () => {
+    const [workouts, setWorkouts] = useState<WorkoutEntry[]>(() => {
+        return JSON.parse(localStorage.getItem('workout') || '[]');
+    });
 
-export const WorkoutList:FC<WorkoutListProps> = () => {
+    const groupedWorkouts = workouts.reduce((acc: Record<string, WorkoutEntry[]>, workout) => {
+        const key = `${workout.date}_${workout.user}`;
+        if (!acc[key]) {
+            acc[key] = [];
+        }
+        acc[key].push(workout);
+        return acc;
+    }, {});
 
-    const [workouts,setWorkouts] = useState(()=>{return JSON.parse(localStorage.getItem('workout') || '[]')})
+    const sortedGroupKeys = Object.keys(groupedWorkouts).sort().reverse();
 
     const clearList = () => {
-        if(window.confirm("Вы уверены, что хотите очистить весь список тренировок?")){
-            localStorage.removeItem('workout')
-            setWorkouts([])
-            alert('Список очищен')
+        if (window.confirm("Вы уверены, что хотите очистить весь список тренировок?")) {
+            localStorage.removeItem('workout');
+            setWorkouts([]);
+            alert('Список очищен');
         }
-    }
+    };
 
     return (
-      <div className="workout-list">
-        <h2>История тренировок</h2>
-        {workouts.length === 0? (
-            <p>Записей пока нет</p>
-        ) : (
-            <ul>
-                {workouts.map((workout:any)=>(
-                    <li key={workout.id}>
-                        <strong>{workout.user}</strong> — {workout.date} — {workout.exercise}: {workout.weight} кг × {workout.reps} повторений
-                    </li>
-                ))}
-            </ul>
-        )}
+        <div className="workout-list">
+            <h2 className="workout-list__title">История тренировок</h2>
+            
+            {workouts.length === 0 ? (
+                <p className="workout-list__empty">Записей пока нет</p>
+            ) : (
+                <div className="workout-groups">
+                    {sortedGroupKeys.map((groupKey) => {
+                        const [date, user] = groupKey.split('_');
+                        const groupWorkouts = groupedWorkouts[groupKey];
+                        
+                        return (
+                            <div key={groupKey} className="workout-group">
+                                <h3 className="workout-group__header">{date} — {user}</h3>
+                                <ul className="workout-group__list">
+                                    {groupWorkouts.map((workout) => (
+                                        <li key={workout.id} className="workout-item">
+                                            <span className="workout-item__exercise">{workout.exercise}</span>
+                                            <span className="workout-item__details">
+                                                {workout.weight} кг × {workout.reps} повторений
+                                                {workout.duration > 0 && (
+                                                    <span className="workout-item__duration"> ({workout.duration} мин)</span>
+                                                )}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        );
+                    })}
+                </div>
+            )}
 
-        {workouts.length > 0 && <button onClick={clearList}>Очистить список</button>}
-        
-      </div>
-    )
-}
+            {workouts.length > 0 && (
+                <button className="workout-list__clear" onClick={clearList}>
+                    Очистить список
+                </button>
+            )}
+        </div>
+    );
+};

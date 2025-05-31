@@ -1,45 +1,112 @@
-.workout-form, .workout-list {
-  max-width: 500px;
+    .workout-form {
+        background: #444;
+        border: 2px solid black;
+        padding: 1rem;
+        margin-top: 30px;
+        max-width: 600px;
   margin: 0 auto;
-  background: #1e1e1e;
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 1.5rem;
+    }
+
+.workout-form__title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  text-align: center;
 }
 
-label {
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-label {
   display: block;
   margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #b0b0b0;
 }
 
-input, select, button {
+/* Унифицированные стили для всех инпутов и селектов */
+.form-input,
+.form-select {
   width: 100%;
-  padding: 0.5rem;
-  margin-top: 0.25rem;
-  margin-bottom: 1rem;
-  background: #2c2c2c;
-  color: white;
+  padding: 0.75rem; /* Единый padding */
+  background: #2d2d2d;
   border: 1px solid #444;
-  border-radius: 4px;
+  border-radius: 6px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+  box-sizing: border-box; /* Важно для одинаковой ширины */
+  height: 44px; /* Фиксированная высота */
+  appearance: none; /* Убираем дефолтные стили у select */
 }
 
-button {
-  cursor: pointer;
-  background-color: #3b82f6;
+/* Стиль для фокуса */
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #8ab4f8;
+  box-shadow: 0 0 0 2px rgba(138, 180, 248, 0.2);
+}
+
+/* Кастомная стрелка для select */
+.form-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23b0b0b0' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px;
+  padding-right: 2.5rem; /* Добавляем место для стрелки */
+}
+
+/* Стиль для placeholder */
+.form-input::placeholder {
+  color: #666;
+  opacity: 1;
+}
+
+/* Стиль для кнопки */
+.form-submit {
+  width: 100%;
+  padding: 0.75rem;
+  background: #4CAF50;
+  color: white;
   border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.5rem;
+  height: 44px; /* Такая же высота как у инпутов */
 }
 
-button:hover {
-  background-color: #2563eb;
+.form-submit:hover {
+  background: #45a049;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+/* Адаптивность */
+@media (max-width: 768px) {
+  .workout-form {
+    padding: 1rem;
+  }
+  
+  .form-input,
+  .form-select,
+  .form-submit {
+    padding: 0.7rem;
+    height: 42px;
+  }
+  
+  .form-select {
+    background-position: right 0.7rem center;
+  }
 }
 
-li {
-  margin-bottom: 0.75rem;
-  padding: 0.5rem;
-  background-color: #2c2c2c;
-  border-radius: 4px;
+/* Дополнительно: стиль для number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
