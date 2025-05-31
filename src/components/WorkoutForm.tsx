@@ -40,7 +40,7 @@ export const WorkoutForm: FC<WorkoutFormProps> = () => {
         localStorage.setItem('workout', JSON.stringify([...existing, newEntry]));
         alert(`Запись сохранена. Данные: Имя:${form.user}, упражнение: ${form.exercise}, вес: ${form.weight}, повторения: ${form.reps}`);
 
-        setForm({...form, exercise: 'Не выбрано', weight: '', reps: 0});
+        setForm({...form,exercise: 'Не выбрано', weight: '', reps: 0});
     };
 
     return (
