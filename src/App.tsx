@@ -4,6 +4,7 @@ import Header from './components/Header';
 import { WorkoutList } from './components/WorkoutList';
 import { WorkoutStats } from './components/WorkoutStats';
 
+
 function App() {
   
 
@@ -16,6 +17,7 @@ function App() {
             <Route path="/" element={<WorkoutForm />} />
             <Route path="/history" element={<WorkoutList />} />
             <Route path="/stats" element={<WorkoutStats />} />
+           
           </Routes>
         </main>
       </div>

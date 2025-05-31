@@ -13,7 +13,7 @@ export const WorkoutStats: FC<WorkoutStatsProps> = () => {
 
     const totalSessions = new Set(workouts.map((w) => w.date)).size;
     const totalSets = workouts.length;
-    const timePerSession = 93;
+    const timePerSession = 15;
     const totalMinutes = workouts.reduce((sum, w) => sum + (w.duration || timePerSession), 0);
     const avgDuration = totalSessions > 0 ? Math.round(totalMinutes / totalSessions) : 0;
 

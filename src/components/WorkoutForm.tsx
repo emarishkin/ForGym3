@@ -33,7 +33,7 @@ export const WorkoutForm: FC<WorkoutFormProps> = () => {
             exercise: form.exercise as 'Не выбрано' | 'Жим лежа' | 'Жим на наклонной скамье' | 'Штанга на бицепс' | 'Французкий жим' | 'Приседания' | 'Становая тяга' | 'Средняя дельта' | 'Бабочка(грудь)' | 'Подтягивания на турнике',
             weight: Number(form.weight),
             reps: form.reps as 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20,
-            duration: Number(form.duration)
+            duration: form.duration as 0 | 1 | 2 | 3 | 4 
         };
 
         const existing = JSON.parse(localStorage.getItem('workout') || '[]');
@@ -107,15 +107,13 @@ export const WorkoutForm: FC<WorkoutFormProps> = () => {
             <div className="form-group">
                 <label className="form-label">
                     Время на упражнении (мин):
-                    <input
-                        className="form-input"
-                        name="duration"
-                        type="number"
-                        value={form.duration}
-                        onChange={handleChange}
-                        min="0"
-                        required
-                    />
+                    <select className="form-select" name="duration" value={form.duration} onChange={handleChange}>
+                        <option value="Не выбрано">Не выбрано</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
                 </label>
             </div>
 
